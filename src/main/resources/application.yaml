@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/covoiturage
+    username: ${DB_USER:cov_user}
+    password: ${DB_PASSWORD:cov_local}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level:
+    ma.youcode.covoiturage: INFO

@@ -353,4 +353,26 @@ class ReservationIntegrationTest {
     private Long inserer(String sql, Object... arguments) {
         return jdbc.queryForObject(sql, Long.class, arguments);
     }
+    @Test
+    void terminer_doitEnregistrerStatutTermineApresDepart() {
+
+        LocalDateTime departPasse = LocalDateTime.now().minusHours(1);
+
+        jdbc.update(
+                "UPDATE trajets SET date_depart = ? WHERE id = ?",
+                departPasse,
+                trajetId
+        );
+
+        trajetService.terminer(conducteurId, trajetId);
+
+        assertThat(statutTrajet()).isEqualTo("TERMINE");
+
+        // Un trajet terminé ne peut plus être annulé.
+        assertThatThrownBy(() ->
+                trajetService.annuler(conducteurId, trajetId)
+        ).isInstanceOf(ConflictException.class);
+
+        assertThat(statutTrajet()).isEqualTo("TERMINE");
+    }
 }

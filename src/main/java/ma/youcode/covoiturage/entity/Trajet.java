@@ -54,4 +54,72 @@ public class Trajet {
         pointsArret.add(point);
         point.setTrajet(this);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Conducteur getConducteur() {
+        return conducteur;
+    }
+
+    public void setConducteur(Conducteur conducteur) {
+        this.conducteur = conducteur;
+    }
+
+    public Vehicule getVehicule() {
+        return vehicule;
+    }
+
+    public void setVehicule(Vehicule vehicule) {
+        this.vehicule = vehicule;
+    }
+
+    public String getVilleDepart() {
+        return villeDepart;
+    }
+
+    public void setVilleDepart(String villeDepart) {
+        this.villeDepart = villeDepart;
+    }
+
+    public String getVilleArrivee() {
+        return villeArrivee;
+    }
+
+    public void setVilleArrivee(String villeArrivee) {
+        this.villeArrivee = villeArrivee;
+    }
+
+    public LocalDateTime getDateDepart() {
+        return dateDepart;
+    }
+
+    public void setDateDepart(LocalDateTime dateDepart) {
+        this.dateDepart = dateDepart;
+    }
+
+    public Integer getPlacesProposees() {
+        return placesProposees;
+    }
+
+    public void setPlacesProposees(Integer placesProposees) {
+        this.placesProposees = placesProposees;
+    }
+
+    public StatutTrajet getStatut() {
+        return statut;
+    }
+
+    public void setStatut(StatutTrajet statut) {
+        this.statut = statut;
+    }
+
+    public List<PointArret> getPointsArret() {
+        return pointsArret;
+    }
 }

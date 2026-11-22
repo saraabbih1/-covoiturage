@@ -37,7 +37,52 @@ public class PointArret {
 
     public PointArret() {
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Trajet getTrajet() {
+        return trajet;
+    }
+
     public void setTrajet(Trajet trajet) {
         this.trajet = trajet;
+    }
+
+    public String getVille() {
+        return ville;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public Integer getOrdre() {
+        return ordre;
+    }
+
+    public void setOrdre(Integer ordre) {
+        this.ordre = ordre;
+    }
+
+    public LocalDateTime getHeurePassage() {
+        return heurePassage;
+    }
+
+    public void setHeurePassage(LocalDateTime heurePassage) {
+        this.heurePassage = heurePassage;
+    }
+
+    public BigDecimal getPrixDepuisDepart() {
+        return prixDepuisDepart;
+    }
+
+    public void setPrixDepuisDepart(BigDecimal prixDepuisDepart) {
+        this.prixDepuisDepart = prixDepuisDepart;
     }
 }

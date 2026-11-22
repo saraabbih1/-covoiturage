@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import java.util.stream.Collectors;
 import java.net.URI;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import java.time.Instant;
 
 @RestControllerAdvice
@@ -126,5 +128,37 @@ public class GlobalExceptionHandler {
                 message,
                 request
         );
+    }
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ProblemDetail> handleMethodNotAllowed(
+            HttpRequestMethodNotSupportedException exception,
+            HttpServletRequest request
+    ) {
+        log.warn(
+                "Methode HTTP non autorisee : {} sur {}",
+                exception.getMethod(),
+                request.getRequestURI()
+        );
+
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(
+                HttpStatus.METHOD_NOT_ALLOWED,
+                "La methode " + exception.getMethod()
+                        + " n'est pas autorisee pour cette URL"
+        );
+
+        problem.setTitle("Method Not Allowed");
+        problem.setType(
+                java.net.URI.create("urn:covoiturage:error:405")
+        );
+        problem.setInstance(
+                java.net.URI.create(request.getRequestURI())
+        );
+        problem.setProperty("timestamp", java.time.Instant.now());
+        problem.setProperty("path", request.getRequestURI());
+
+        return ResponseEntity
+                .status(HttpStatus.METHOD_NOT_ALLOWED)
+                .headers(exception.getHeaders())
+                .body(problem);
     }
 }

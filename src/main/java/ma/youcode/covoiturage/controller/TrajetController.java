@@ -32,4 +32,12 @@ public class TrajetController {
     ) {
         return service.terminer(conducteurId, trajetId);
     }
+    @PatchMapping("/{trajetId}/annuler")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void annuler(
+            @PathVariable("conducteurId") Long conducteurId,
+            @PathVariable("trajetId") Long trajetId
+    ) {
+        service.annuler(conducteurId, trajetId);
+    }
 }

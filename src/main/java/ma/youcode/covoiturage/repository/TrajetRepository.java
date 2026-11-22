@@ -9,7 +9,8 @@ import ma.youcode.covoiturage.enums.StatutReservation;
 import ma.youcode.covoiturage.enums.StatutTrajet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
+import jakarta.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -96,4 +97,11 @@ public interface TrajetRepository extends JpaRepository<Trajet, Long> {
             @Param("statutReservation") StatutReservation statutReservation,
             Pageable pageable
     );
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("""
+        SELECT t
+        FROM Trajet t
+        WHERE t.id = :id
+        """)
+    Optional<Trajet> findByIdForUpdate(@Param("id") Long id);
 }

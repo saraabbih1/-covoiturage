@@ -17,6 +17,10 @@ import ma.youcode.covoiturage.repository.ConducteurRepository;
 import ma.youcode.covoiturage.repository.TrajetRepository;
 import ma.youcode.covoiturage.repository.VehiculeRepository;
 import org.slf4j.Logger;
+import ma.youcode.covoiturage.entity.Reservation;
+import ma.youcode.covoiturage.entity.Reservation;
+import ma.youcode.covoiturage.repository.ReservationRepository;
+import ma.youcode.covoiturage.repository.ReservationRepository;
 import ma.youcode.covoiturage.exception.ConflictException;
 import ma.youcode.covoiturage.dto.TrajetRechercheResponse;
 import ma.youcode.covoiturage.enums.StatutReservation;
@@ -48,19 +52,22 @@ public class TrajetServiceImpl implements TrajetService {
     private final VehiculeRepository vehiculeRepository;
     private final TrajetMapper mapper;
     private final PointArretMapper pointArretMapper;
+    private final ReservationRepository reservationRepository;
 
     public TrajetServiceImpl(
             TrajetRepository repository,
             ConducteurRepository conducteurRepository,
             VehiculeRepository vehiculeRepository,
             TrajetMapper mapper,
-            PointArretMapper pointArretMapper
+            PointArretMapper pointArretMapper,
+            ReservationRepository reservationRepository
     ) {
         this.repository = repository;
         this.conducteurRepository = conducteurRepository;
         this.vehiculeRepository = vehiculeRepository;
         this.mapper = mapper;
         this.pointArretMapper = pointArretMapper;
+        this.reservationRepository = reservationRepository;
     }
 
     @Override
@@ -292,7 +299,7 @@ public class TrajetServiceImpl implements TrajetService {
     @Transactional
     public TrajetResponse terminer(Long conducteurId, Long trajetId) {
 
-        Trajet trajet = repository.findDetailById(trajetId)
+        Trajet trajet = repository.findByIdForUpdate(trajetId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException(
                                 "Trajet introuvable : " + trajetId
@@ -328,5 +335,49 @@ public class TrajetServiceImpl implements TrajetService {
         );
 
         return mapper.toResponse(trajet);
+    }
+    @Override
+    @Transactional
+    public void annuler(Long conducteurId, Long trajetId) {
+
+        Trajet trajet = repository.findByIdForUpdate(trajetId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Trajet introuvable : " + trajetId
+                        )
+                );
+
+        if (!trajet.getConducteur().getId().equals(conducteurId)) {
+            throw new ForbiddenException(
+                    "Ce trajet n'appartient pas a ce conducteur"
+            );
+        }
+
+        if (trajet.getStatut() != StatutTrajet.PUBLIE
+                && trajet.getStatut() != StatutTrajet.COMPLET) {
+
+            throw new ConflictException(
+                    "Seul un trajet publie ou complet peut etre annule"
+            );
+        }
+
+        List<Reservation> reservations =
+                reservationRepository.findByTrajet_IdAndStatut(
+                        trajetId,
+                        StatutReservation.CONFIRMEE
+                );
+
+        for (Reservation reservation : reservations) {
+            reservation.setStatut(StatutReservation.ANNULEE);
+        }
+
+        trajet.setStatut(StatutTrajet.ANNULE);
+
+        log.info(
+                "Trajet annule : id={}, conducteurId={}, reservationsAnnulees={}",
+                trajetId,
+                conducteurId,
+                reservations.size()
+        );
     }
 }

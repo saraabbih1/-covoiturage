@@ -1,0 +1,3537 @@
+{
+  "info": {
+    "_postman_id": "fc1d06ef-af5a-4819-b107-54cbe9d3b00d",
+    "name": "covoiturage",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53108803",
+    "_collection_link": "https://go.postman.co/collection/53108803-fc1d06ef-af5a-4819-b107-54cbe9d3b00d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Conducteurs",
+      "item": [
+        {
+          "name": "Créer un conducteur - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"abbihsara@gmzil.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"ABC3254\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Lister les conducteurs - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter le conducteur créé - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "4"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter un ID inexistant - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Rechercher par nom - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/recherche?recherche=AlamiTest",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "recherche"
+              ],
+              "query": [
+                {
+                  "key": "recherche",
+                  "value": "AlamiTest"
+                }
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Rechercher par email - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/recherche?recherche=abbihsara@gmail.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "recherche"
+              ],
+              "query": [
+                {
+                  "key": "recherche",
+                  "value": "abbihsara@gmail.com"
+                }
+              ]
+            },
+            "description": "06 - Rechercher par email - 200. Exécuter le dossier dans l'ordre. Données de test dédiées; aucun profil existant n'est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier le téléphone en gardant email et permis - 200",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"sarra@yahoo.com\",\n  \"telephone\": \"0611111111\",\n  \"numeroPermis\": \"ABCD123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "4"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier la modification enregistrée - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "4"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un email déjà utilisé à la création - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"sara@yahoo\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"DUP-COND-A-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un permis déjà utilisé à la création - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"abbihsara30@gmail.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"ABC123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un nom vide à la création - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"hamid.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-A-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer un second conducteur pour tester les conflits - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"BennaniTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"sara.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-B-456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser l'email d'un autre conducteur à la modification - 409",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"sara.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-A-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser le permis d'un autre conducteur à la modification - 409",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"hamid.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-B-456\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un nom vide à la modification - 400",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"hamid.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-A-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier un ID inexistant - 404",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"AlamiTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"hamid.conducteur@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"COND-A-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        }
+      ],
+      "description": "Valeurs fixes. Adapter les IDs 1 et 2 aux IDs réels avant envoi (URLs, body et assertions). Créations : email/permis/plaque uniques requis. Vérifier les IDs avant DELETE. Dates futures requises."
+    },
+    {
+      "name": "Passagers",
+      "item": [
+        {
+          "name": "Créer un passager - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"BennaniTest\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"0633333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers"
+              ]
+            },
+            "description": "01 - Créer un passager - 201. Exécuter le dossier dans l'ordre avec Spring Boot et PostgreSQL démarrés. Seul le profil créé par le test 01 est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Lister les passagers - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter le passager créé - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter un ID inexistant - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Rechercher par email - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Statut HTTP 200\", function () { pm.response.to.have.status(200); });\npm.test(\"Recherche contenant le bon profil\", function () { const data=pm.response.json();const email=pm.collectionVariables.get(\"cov_passager_email\");pm.expect(data).to.be.an(\"array\").and.not.empty;pm.expect(data.every(x=>x.email.toLowerCase().includes(email.toLowerCase()))).to.eql(true);pm.expect(data.some(x=>String(x.id)===String(pm.collectionVariables.get(\"cov_passager_id\")))).to.eql(true); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/recherche?email=salma@gmail.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "recherche"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "salma@gmail.com"
+                }
+              ]
+            },
+            "description": "05 - Rechercher par email - 200. Exécuter le dossier dans l'ordre avec Spring Boot et PostgreSQL démarrés. Seul le profil créé par le test 01 est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Recherche sans résultat - 200 et liste vide",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/recherche?email=introuvable-s@gmail.com",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "recherche"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "introuvable-s@gmail.com"
+                }
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier le téléphone du passager - 200",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Statut HTTP 200\", function () { pm.response.to.have.status(200); });\npm.test(\"Téléphone modifié et identité conservée\", function () { const b=pm.response.json();pm.expect(b.telephone).to.eql(\"0644444444\");pm.expect(b.email).to.eql(pm.collectionVariables.get(\"cov_passager_email\"));pm.expect(String(b.id)).to.eql(String(pm.collectionVariables.get(\"cov_passager_id\"))); });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"BennaniTest\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"0644444444\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1"
+              ]
+            },
+            "description": "07 - Modifier le téléphone du passager - 200. Exécuter le dossier dans l'ordre avec Spring Boot et PostgreSQL démarrés. Seul le profil créé par le test 01 est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier la modification enregistrée - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un nom vide à la création - 400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Statut HTTP 400\", function () { pm.response.to.have.status(400); });\n\npm.test(\"Erreur explicite\", function () { const b=pm.response.json();pm.expect(b.status).to.eql(400);pm.expect(b.detail).to.be.a(\"string\").and.not.empty; });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"0633333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers"
+              ]
+            },
+            "description": "09 - Refuser un nom vide à la création - 400. Exécuter le dossier dans l'ordre avec Spring Boot et PostgreSQL démarrés. Seul le profil créé par le test 01 est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un email invalide à la création - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"BennaniTest\",\n  \"prenom\": \"Salma\",\n  \"email\": \"email-invalide\",\n  \"telephone\": \"0633333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un téléphone vide à la création - 400",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Statut HTTP 400\", function () { pm.response.to.have.status(400); });\n\npm.test(\"Erreur explicite\", function () { const b=pm.response.json();pm.expect(b.status).to.eql(400);pm.expect(b.detail).to.be.a(\"string\").and.not.empty; });"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers"
+              ]
+            },
+            "description": "11 - Refuser un téléphone vide à la création - 400. Exécuter le dossier dans l'ordre avec Spring Boot et PostgreSQL démarrés. Seul le profil créé par le test 01 est modifié."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un nom vide à la modification - 400",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"0633333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier un ID inexistant - 404",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"BennaniTest\",\n  \"prenom\": \"Salma\",\n  \"email\": \"salma@gmail.com\",\n  \"telephone\": \"0633333333\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier que la modification refusée ne change pas le profil - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        }
+      ],
+      "description": "Valeurs fixes. Adapter les IDs 1 et 2 aux IDs réels avant envoi (URLs, body et assertions). Créations : email/permis/plaque uniques requis. Vérifier les IDs avant DELETE. Dates futures requises."
+    },
+    {
+      "name": "Véhicules",
+      "item": [
+        {
+          "name": "Créer le conducteur propriétaire - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"VehiculeTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"driver.a.vehicule-test@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"VA-vehicule-test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer un autre conducteur pour les refus - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"VehiculeTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"driver.b.vehicule-test@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"VB-vehicule-test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer le véhicule - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Lister les véhicules du propriétaire - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter le véhicule - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier couleur et capacité - 200",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Noir\",\n  \"capacite\": 5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier la modification persistée - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une immatriculation déjà utilisée - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser capacité zéro - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser capacité neuf - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser capacité absente - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser marque vide - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Conducteur inexistant à la création - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/9223372036854775807/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "9223372036854775807",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Véhicule inexistant à la consultation - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser consultation par autre conducteur - 403",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser modification par autre conducteur - 403",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser suppression par autre conducteur - 403",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer second véhicule pour conflit de modification - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"67890-B-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser immatriculation d'un autre véhicule au PUT - 409",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"67890-B-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser capacité invalide au PUT - 400",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 9\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Modifier un véhicule inexistant - 404",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"12345-A-50\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier que l'autre conducteur a une liste vide - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Supprimer le véhicule sans trajet - 204",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier que le véhicule supprimé est introuvable - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Supprimer le second véhicule de test - 204",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "2"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Supprimer un véhicule inexistant - 404",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/9223372036854775807",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "9223372036854775807"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        }
+      ],
+      "description": "Valeurs fixes. Adapter les IDs 1 et 2 aux IDs réels avant envoi (URLs, body et assertions). Créations : email/permis/plaque uniques requis. Vérifier les IDs avant DELETE. Dates futures requises."
+    },
+    {
+      "name": "Trajets",
+      "item": [
+        {
+          "name": "Créer le conducteur propriétaire - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"TrajetTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"trajet.a.trajet-test@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"TA-trajet-test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer un autre conducteur - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"TrajetTest\",\n  \"prenom\": \"Hamid\",\n  \"email\": \"trajet.b.trajet-test@example.com\",\n  \"telephone\": \"0600000000\",\n  \"numeroPermis\": \"TB-trajet-test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer le véhicule de quatre places - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marque\": \"Dacia\",\n  \"modele\": \"Logan\",\n  \"immatriculation\": \"T-trajet-test\",\n  \"couleur\": \"Blanc\",\n  \"capacite\": 4\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Publier un trajet avec quatre points d'arrêt - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser la suppression du véhicule lié au trajet - 409",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/vehicules/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "vehicules",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser le véhicule d'un autre conducteur - 403",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un conducteur inexistant - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/9223372036854775807/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "9223372036854775807",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un véhicule inexistant - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 9223372036854770000,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser cinq places pour un véhicule de quatre - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 5,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser zéro place - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 0,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser le nombre de places absent - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": null,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un seul point d'arrêt - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une liste de points absente - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un départ dans le passé - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2020-01-01T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un prix de départ différent de zéro - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 10\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser des heures de passage identiques - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser des heures décroissantes - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser des prix identiques - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser des prix décroissants - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 30\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une ville répétée avec casse et espaces - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \" rabat \",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser des ordres dupliqués - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un trou dans les ordres - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 5,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une ville vide - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un prix négatif - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": -1\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un prix avec trois décimales - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40.123\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Trier les points reçus dans le désordre - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vehiculeId\": 1,\n  \"placesProposees\": 3,\n  \"pointsArret\": [\n    {\n      \"ville\": \"Marrakech\",\n      \"ordre\": 4,\n      \"heurePassage\": \"2027-01-15T21:30:00\",\n      \"prixDepuisDepart\": 120\n    },\n    {\n      \"ville\": \"Settat\",\n      \"ordre\": 3,\n      \"heurePassage\": \"2027-01-15T19:15:00\",\n      \"prixDepuisDepart\": 70\n    },\n    {\n      \"ville\": \"Casablanca\",\n      \"ordre\": 2,\n      \"heurePassage\": \"2027-01-15T18:15:00\",\n      \"prixDepuisDepart\": 40\n    },\n    {\n      \"ville\": \"Rabat\",\n      \"ordre\": 1,\n      \"heurePassage\": \"2027-01-15T17:00:00\",\n      \"prixDepuisDepart\": 0\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/1/trajets",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "1",
+                "trajets"
+              ]
+            },
+            "description": "Valeurs fixes : adapter les IDs aux données réelles."
+          },
+          "response": []
+        },
+        {
+          "name": "Consulter un trajet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/trajets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "trajets",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "recherche entr 2 point",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"id\": 1,\r\n  \"villeMontee\": \"Casablanca\",\r\n  \"villeDescente\": \"Marrakech\",\r\n  \"heureMontee\": \"2027-01-15T18:15:00\",\r\n  \"heureDescente\": \"2027-01-15T21:30:00\",\r\n  \"prixParPlace\": 80.00\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/trajets/recherche?depart=Marrakech&arrivee=Casablanca&date=2027-01-15&places=0&prixMax=70&page=0&size=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "trajets",
+                "recherche"
+              ],
+              "query": [
+                {
+                  "key": "depart",
+                  "value": "Marrakech"
+                },
+                {
+                  "key": "arrivee",
+                  "value": "Casablanca"
+                },
+                {
+                  "key": "date",
+                  "value": "2027-01-15"
+                },
+                {
+                  "key": "places",
+                  "value": "0"
+                },
+                {
+                  "key": "prixMax",
+                  "value": "70"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "terminer un trajet.",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": 409,\r\n  \"detail\": \"Impossible de terminer un trajet avant son depart\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/conducteurs/2/trajets/1/terminer",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "conducteurs",
+                "2",
+                "trajets",
+                "1",
+                "terminer"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Valeurs fixes. Adapter les IDs 1 et 2 aux IDs réels avant envoi (URLs, body et assertions). Créations : email/permis/plaque uniques requis. Vérifier les IDs avant DELETE. Dates futures requises."
+    },
+    {
+      "name": "Réservations",
+      "item": [
+        {
+          "name": "Consulter les points du trajet avant réservation - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/trajets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "trajets",
+                "1"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Créer une réservation Settat vers Marrakech - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une seconde réservation confirmée du même passager - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser montée et descente inversées - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 4,\n  \"pointDescenteId\": 3,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser le même point à la montée et à la descente - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 3,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un point ne faisant pas partie du trajet - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 2147483647,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser zéro place - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 0\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un trajet absent du body - 400",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": null,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un passager inexistant - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/9223372036854775807/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "9223372036854775807",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser un trajet inexistant - 404",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 2147483647,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser trois places quand il en reste deux - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 3\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Réserver les deux dernières places Casa vers Marrakech - 201",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 2,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 2\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier que le trajet devient complet - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/trajets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "trajets",
+                "1"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une réservation sur un trajet complet - 409",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trajetId\": 1,\n  \"pointMonteeId\": 3,\n  \"pointDescenteId\": 4,\n  \"nombrePlaces\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations"
+              ]
+            },
+            "description": "Adapter les IDs aux données réelles. Tests supposant un trajet PUBLIE futur de 3 places, sans réservation initiale, points Settat=3 et Marrakech=4."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser l'annulation par un autre passager - 403",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/2/reservations/1/annuler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "2",
+                "reservations",
+                "1",
+                "annuler"
+              ]
+            },
+            "description": "Valeurs fixes : réservation 1 appartenant au passager 1, trajet 1. Adapter aux IDs réels. Tester les refus 403 et 404 avant l'annulation. Succès : réservation CONFIRMEE, trajet PUBLIE ou COMPLET, départ dans au moins 24h. La réservation est réellement annulée."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser l'annulation d'une réservation inexistante - 404",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations/9223372036854775807/annuler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations",
+                "9223372036854775807",
+                "annuler"
+              ]
+            },
+            "description": "Valeurs fixes : réservation 1 appartenant au passager 1, trajet 1. Adapter aux IDs réels. Tester les refus 403 et 404 avant l'annulation. Succès : réservation CONFIRMEE, trajet PUBLIE ou COMPLET, départ dans au moins 24h. La réservation est réellement annulée."
+          },
+          "response": []
+        },
+        {
+          "name": "Annuler sa réservation au moins 24h avant départ - 204",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations/1/annuler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations",
+                "1",
+                "annuler"
+              ]
+            },
+            "description": "Valeurs fixes : réservation 1 appartenant au passager 1, trajet 1. Adapter aux IDs réels. Tester les refus 403 et 404 avant l'annulation. Succès : réservation CONFIRMEE, trajet PUBLIE ou COMPLET, départ dans au moins 24h. La réservation est réellement annulée."
+          },
+          "response": []
+        },
+        {
+          "name": "Refuser une seconde annulation - 409",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/passagers/1/reservations/1/annuler",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "passagers",
+                "1",
+                "reservations",
+                "1",
+                "annuler"
+              ]
+            },
+            "description": "Valeurs fixes : réservation 1 appartenant au passager 1, trajet 1. Adapter aux IDs réels. Tester les refus 403 et 404 avant l'annulation. Succès : réservation CONFIRMEE, trajet PUBLIE ou COMPLET, départ dans au moins 24h. La réservation est réellement annulée."
+          },
+          "response": []
+        },
+        {
+          "name": "Vérifier la réouverture du trajet après annulation - 200",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/trajets/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "trajets",
+                "1"
+              ]
+            },
+            "description": "Valeurs fixes : réservation 1 appartenant au passager 1, trajet 1. Adapter aux IDs réels. Tester les refus 403 et 404 avant l'annulation. Succès : réservation CONFIRMEE, trajet PUBLIE ou COMPLET, départ dans au moins 24h. La réservation est réellement annulée."
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Valeurs fixes sans variables. Prérequis : passagers 1 et 2 existants; trajet 1 PUBLIE futur avec 3 places et aucune réservation confirmée; points 2=Casa (40 DH), 3=Settat (70 DH), 4=Marrakech (120 DH). Adapter URLs, body et assertions aux IDs réels. Les deux créations réussies sont persistées et remplissent le trajet : ne pas relancer le dossier sans préparer un nouveau trajet. Pas encore de requête d'annulation, fonctionnalité non implémentée. Exécution locale sur localhost:8081."
+    }
+  ],
+  "variable": [
+    {
+      "key": "cov_passager_email",
+      "value": ""
+    },
+    {
+      "key": "cov_passager_id",
+      "value": ""
+    }
+  ]
+}
